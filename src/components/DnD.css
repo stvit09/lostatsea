@@ -1,0 +1,96 @@
+/* DnD.css */
+
+/* Container holding all the draggable items */
+.cell-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%; /* Ensures the container stretches properly */
+  max-width: 350px; /* Optional, adjusts max width of the container */
+  margin: 20px auto; /* Centers the container on the page */
+  background-color: #fafafa; /* Light background for the container */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Soft shadow for better visuals */
+}
+
+/* Individual draggable item */
+.cell {
+  padding: 12px;
+  margin-bottom: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f4f4f4;
+  width: 100%; /* Ensures it stretches to fit the container */
+  cursor: grab; /* Default grab cursor */
+  user-select: none; /* Prevent text selection while dragging */
+  transition: background-color 0.2s, box-shadow 0.2s; /* Smooth transitions */
+}
+
+/* Change the background and cursor when an item is being dragged */
+.cell.dragging {
+  background-color: #ddd; /* Light gray when dragging */
+  opacity: 0.8; /* Make the item slightly transparent */
+  cursor: grabbing; /* Grabbing cursor during drag */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adds a shadow to indicate it's being dragged */
+}
+
+/* Optional: Add hover effect to give users visual feedback */
+.cell:hover {
+  background-color: #e0e0e0; /* Slightly darker when hovered */
+}
+
+/* Scrollbar styling for the container */
+.cell-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.cell-container::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+.cell-container::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+/* Optional: Add a custom drag handle (e.g., drag icon) */
+.cell::before {
+  content: "🔽"; /* Optional: You can add a visual drag handle */
+  margin-right: 8px;
+  cursor: grab; /* Make the handle look draggable */
+}
+
+.App .cell-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 350px;
+  margin: 20px auto;
+  background-color: #fafafa;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.App .cell {
+  padding: 12px;
+  margin-bottom: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f4f4f4;
+  width: 100%;
+  cursor: grab;
+  user-select: none;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.App .cell.dragging {
+  background-color: #ddd;
+  opacity: 0.8;
+  cursor: grabbing;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}

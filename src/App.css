@@ -1,38 +1,96 @@
+/* General App Styling */
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  background: linear-gradient(to bottom, #0077b6, #023e8a); /* Ocean gradient */
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between; /* Left: Draggable | Right: Title & Image */
+  align-items: flex-start; /* Align everything to the top */
+  font-family: "Arial", sans-serif;
+  padding: 30px 50px;
+}
+
+/* Title & Image Container */
+.title-container {
+  flex: 1; /* Takes remaining space */
+  display: flex;
+  flex-direction: column; /* Stack title and image */
+  justify-content: flex-start; /* Align to the top */
+  align-items: center; /* Center horizontally */
+  color: white;
+  padding-top: 10px; /* Reduce padding to move up */
+}
+
+/* Title Styling */
+.title-container h1 {
+  font-size: 42px;
+  font-weight: bold;
+  background: linear-gradient(to right, #ffd700, #ff8c00); /* Gold to orange gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+  margin-bottom: 15px;
+}
+
+/* Splash Image */
+.splash-image {
+  width: 80%; /* Adjust size as needed */
+  max-width: 500px;
+  border-radius: 12px;
+  box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+/* Droppable Container - Aligned Top Left */
+.droppable-container {
+  padding: 20px;
+  background: #caf0f8; /* Light ocean blue */
+  border-radius: 12px;
+  width: 340px;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+  border: 3px solid #0077b6;
+  align-self: flex-start; /* Keeps it at the top */
+}
+
+/* Draggable Items */
+.draggable-item {
+  padding: 14px;
+  margin-bottom: 10px;
+  background: #48cae4; /* Bright cyan */
+  color: #023e8a;
+  border-radius: 8px;
+  border: 2px solid #0077b6;
+  cursor: grab;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, background 0.2s;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: bold;
+  user-select: none;
+}
+
+/* Hover & Drag Effects */
+.draggable-item:hover {
+  background: #0096c7;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.draggable-item:active {
+  cursor: grabbing;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Dragging Effect */
+.draggable-item.dragging {
+  background: #90e0ef;
+  transform: scale(1.08);
+  box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+/* Placeholder Effect */
+.placeholder {
+  height: 45px;
+  background: #0077b6;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  opacity: 0.7;
 }

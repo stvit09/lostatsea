@@ -1,0 +1,67 @@
+mport { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import "./DnD.css"; // Ensure you create a CSS file for styling
+
+const initialItems = [
+  "Sextant",
+  "Shaving Mirror",
+  "Mosquito Netting",
+  "25 liter container of Water",
+  "Case of Army Rations",
+  "Maps of the Pacific Ocean",
+  "Floating Seat Cushion",
+  "10 liter can of Oil/Petrol mixture",
+  "Small Transistor Radio",
+  "20 sq. ft. of opaque Plastic Sheeting",
+  "Can of Shark Repellent",
+  "One bottle rubbing alcohol",
+  "15 ft. of Nylon Rope",
+  "2 boxes of Chocolate Bars",
+  "An ocean Fishing Kit & Pole",
+];
+
+const DnD = () => {
+  const [items, setItems] = useState(initialItems);
+
+  const handleOnDragEnd = (result) => {
+    if (!result.destination) return;
+
+    const reorderedItems = Array.from(items);
+    const [movedItem] = reorderedItems.splice(result.source.index, 1);
+    reorderedItems.splice(result.destination.index, 0, movedItem);
+
+    setItems(reorderedItems);
+  };
+
+  return (
+    <DragDropContext onDragEnd={handleOnDragEnd}>
+      <Droppable droppableId="droppable">
+        {(provided) => (
+          <div
+            className="cell-container"
+            {...provided.droppableProps}
+            ref={provided.innerRef}
+          >
+            {items.map((item, index) => (
+              <Draggable key={item} draggableId={item} index={index}>
+                {(provided, snapshot) => (
+                  <div
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                    className={`cell ${snapshot.isDragging ? "dragging" : ""}`}
+                  >
+                    {item}
+                  </div>
+                )}
+              </Draggable>
+            ))}
+            {provided.placeholder}
+          </div>
+        )}
+      </Droppable>
+    </DragDropContext>
+  );
+};
+
+export default DnD;
+
